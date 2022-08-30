@@ -22,3 +22,8 @@ streamlit.header("Fruityvice Fruit Advice!")
 
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 streamlit.text(fruityvice_response.json())
+
+#convert json response to tabular format
+fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+#add tabular formatted data to streamlit
+streamlit.dataframe(fruityvice_normalized)
